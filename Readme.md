@@ -2,7 +2,7 @@
 
 This module provides for the display of a *DataGrid* control inside of a *Repeater* control to display a nested data, commonly also referred to as a ChildGrid. 
 
-Video / screenshot
+https://github.com/user-attachments/assets/476319a7-dc6b-410f-b388-e90917d2166f
 
 ## Contents <!-- omit in toc -->
 - [Version](#version)
