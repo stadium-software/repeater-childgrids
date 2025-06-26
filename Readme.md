@@ -40,6 +40,7 @@ let sortDirection = state.sortDirection;
 let pagingType = ~.Parameters.Input.PagingType || "default";
 let expandAll = ~.Parameters.Input.InitialiseExpanded || false;
 let expandMultiple = ~.Parameters.Input.ExpandMultiple;
+let dgDataItem = ~.Parameters.Input.DataGridDataItem || "children";
 if (expandMultiple === "false" || expandMultiple === false) {
     expandAll = false;
 } else {
@@ -115,7 +116,7 @@ async function assignData(pd) {
 async function assignChildData(pd) {
     for (let i = 0; i < pd.length; i++) {
         let childDGName = childDataGridName + "-item" + i;
-        scope[repeaterName][childDGName + "Data"] = pd[i].children;
+        scope[repeaterName][childDGName + "Data"] = pd[i][dgDataItem];
         scope[repeaterName][childDGName + "SearchTerm"] = null;
     }
 }
@@ -639,7 +640,7 @@ The state of the DataGrid is stored in this type
 ![](images/Statetype.png)
 
 ### DataSet
-The "DataSet" type must contain properties for all data columns in the *Repeater* control. This includes both visible and hidden columns. This type will be used in the *Repeater* *ListItem Type* property. 
+The "DataSet" type must contain properties for all data columns in the *Repeater* as well as the *DataGrid* control. This includes both visible and hidden columns. This type will be used in the *Repeater* *ListItem Type* property. 
 
 The "DataSet" type for the *sample* application as the following properties
 1. first_name (any)
@@ -735,10 +736,11 @@ Example ColumnsList Value
     3. Columns: The List of columns called "ColumnsList"
     4. ContainerClass: The unique class you assigned to the main container (e.g. client-side-datagrid)
     5. Data: Select the query Result or assign the JSON array to display from the API call
-    6. State: The "State" Type created in step 1 of the "Initialise" script
-    7. PagingType (optional): Leave blank or enter 'classic' for the standard Stadium DataGrid paging format
-    8. ExpandMultiple (optional): A boolean to define if only one row can be expanded at a time (default is false)
-    9. InitialiseExpanded (optional): A boolean to define if the DataGrid should be expanded on page load (default is false)
+    6. DataGridDataItem: The name of the property in the *DataSet* that contains the data for the DataGrid (e.g. "children"). The defautlt is "children"
+    7. State: The "State" Type created in step 1 of the "Initialise" script
+    8. PagingType (optional): Leave blank or enter 'classic' for the standard Stadium DataGrid paging format
+    9. ExpandMultiple (optional): A boolean to define if only one row can be expanded at a time (default is false)
+    10. InitialiseExpanded (optional): A boolean to define if the DataGrid should be expanded on page load (default is false)
 
 ## CSS
 The CSS below is required for the correct functioning of the module. Variables exposed in the [*repeater-child-datagrid-variables.css*](repeater-child-datagrid-variables.css) file can be [customised](#customising-css).
