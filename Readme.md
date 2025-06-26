@@ -4,10 +4,6 @@ This module provides for the display of a *DataGrid* control inside of a *Repeat
 
 https://github.com/user-attachments/assets/476319a7-dc6b-410f-b388-e90917d2166f
 
-## Contents <!-- omit in toc -->
-- [Version](#version)
-- [Setup](#setup)
-
 # Version
 1.0
 
