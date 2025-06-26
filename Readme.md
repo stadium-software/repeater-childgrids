@@ -1,4 +1,4 @@
-# Repeater ChildDataGrid <!-- omit in toc -->
+# Repeater Child DataGrid <!-- omit in toc -->
 
 This module provides for the display of a *DataGrid* control inside of a *Repeater* control to display a nested data, commonly also referred to as a ChildGrid. 
 
