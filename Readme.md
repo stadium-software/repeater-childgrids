@@ -13,6 +13,8 @@ https://github.com/user-attachments/assets/476319a7-dc6b-410f-b388-e90917d2166f
 1. Check the *Enable Style Sheet* checkbox in the application properties
 
 ## RepeaterChildDataGrid Global Script
+This is the main script necessary to create the tabular view of the Repeater
+
 1. Create a Global Script called "RepeaterChildDataGrid"
 2. Add the input parameters below to the Global Script
    1. Data
@@ -559,6 +561,8 @@ window.rData = function() {
 ```
 
 ## RepeaterChildDataGridState Global Script
+This script allow for the retrieval of the state of the Repeater, including the page, page size, sort field and sort direction. This is useful to restore the state of the Repeater when the page is reloaded or when the user navigates back to the page.
+
 1. Create a Global Script called "RepeaterChildDataGridState"
 2. Add the input parameters below to the Global Script
    1. ContainerClass
@@ -592,6 +596,10 @@ return ret;
 ```
 
 ### RepeaterChildDataGridDataGet Script
+This script is used to retrieve the data from the Repeater control. It is useful when users can edit elements in the Repeater as it binds to the *Repeater.List*.
+
+NOTE: For the RepeaterChildDataGridDataGet to work, you can only have one Repeater on the page
+
 1. Create a Global Script called "RepeaterChildDataGridDataGet"
 2. Add the *output* parameter below to the Global Script
    1. Data
@@ -604,8 +612,6 @@ return ret;
 /* Stadium Script v1.0 https://github.com/stadium-software/repeater-datagrid-client-side */
 return window.rData();
 ```
-
-NOTE: For the RepeaterChildDataGridDataGet to work, you can only have one Repeater on the page
 
 ## Types
 Create the following types
