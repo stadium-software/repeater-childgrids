@@ -694,6 +694,9 @@ A *Grid* control will create the rows and columns
 A *Repeater* control will contain the data (rows)
 1. Drag a *Repeater* control into the *Grid* control
 2. Assign the "DataSet" *Type* to the *Repeater* *ListItem Type* property
+
+![](images/RepeaterListItemType.png)
+
 3. Drag all the controls you want to display in the *Repeater* into control
 4. Bind each *Repeater* control to a DataSet property
 
@@ -701,8 +704,6 @@ A *Repeater* control will contain the data (rows)
 
 5. Drag a *DataGrid* control into the *Repeater* control into the second row
 6. Assign the DataGrid columns as you usually would
-
-![](images/RepeaterListItemType.png)
 
 ## Page.Load
 1. Drag the "State" type into the script
