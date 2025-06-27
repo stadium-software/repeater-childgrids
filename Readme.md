@@ -695,7 +695,10 @@ A *Repeater* control will contain the data (rows)
 1. Drag a *Repeater* control into the *Grid* control
 2. Assign the "DataSet" *Type* to the *Repeater* *ListItem Type* property
 3. Drag all the controls you want to display in the *Repeater* into control
-4. Assign the *DataSet* properties to the controls in the *Repeater*
+4. Bind each *Repeater* control to a DataSet property
+
+![](images/BindControl.png)
+
 5. Drag a *DataGrid* control into the *Repeater* control into the second row
 6. Assign the DataGrid columns as you usually would
 
