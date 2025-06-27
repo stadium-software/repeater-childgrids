@@ -745,7 +745,13 @@ Example ColumnsList Value
 
 6. Drag the "RepeaterChildDataGrid" script into event handler and provide the input parameters
     1. RepeaterControlName: The name of the Repeater control from the Stadium Designer properties
+
+![](images/RepeaterName.png)
+
     2. DataGridControlName: The name of the DataGrid control inside the Repeater control in the Stadium Designer properties
+
+![](images/DataGridName.png)
+
     3. Columns: The List of columns called "ColumnsList"
     4. ContainerClass: The unique class you assigned to the main container (e.g. client-side-datagrid)
     5. Data: Select the query Result or assign the JSON array to display from the API call
@@ -754,6 +760,8 @@ Example ColumnsList Value
     8. PagingType (optional): Leave blank or enter 'classic' for the standard Stadium DataGrid paging format
     9. ExpandMultiple (optional): A boolean to define if only one row can be expanded at a time (default is false)
     10. InitialiseExpanded (optional): A boolean to define if the DataGrid should be expanded on page load (default is false)
+
+![](images/ScriptProps.png)
 
 ## CSS
 The CSS below is required for the correct functioning of the module. Variables exposed in the [*repeater-child-datagrid-variables.css*](repeater-child-datagrid-variables.css) file can be [customised](#customising-css).
