@@ -711,7 +711,6 @@ A *Repeater* control will contain the data (rows)
 
 ![](images/StateSetup.png)
 
-2. Assign the "State" input parameter to the value property
 3. Fetch your data by dragging your query or WebService operation into the script
 4. Drag a List into the script and assign the type "Column" to the List
 5. Add each control / column in your Repeater to the List by providing the following
