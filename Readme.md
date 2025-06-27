@@ -721,7 +721,7 @@ A *Repeater* control will contain the data (rows)
 
 ![](images/ColumnsList.png)
 
-Example ColumnsList Value
+Example ColumnsList Value (columns must be in the order in which they appear in the Repeater)
 
 ```json
 [{
