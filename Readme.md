@@ -10,6 +10,7 @@ https://github.com/user-attachments/assets/476319a7-dc6b-410f-b388-e90917d2166f
 2. Add the [types](#types)
 3. Add the [controls](#page) to your Page
 4. Initialise the view in the [Page.Load](#pageload) event handler
+5. Add the [CSS](#css) to your Embedded files and reference them in the application  header property
 
 # Version
 1.0
