@@ -26,6 +26,7 @@ This is the main script necessary to create the tabular view of the Repeater
    7. RepeaterControlName
    8. DataGridControlName
    9. ContainerClass
+   10. DataGridDataItem
 3. Drag a *JavaScript* action into the script
 4. Add the Javascript below into the JavaScript code property
 ```javascript
