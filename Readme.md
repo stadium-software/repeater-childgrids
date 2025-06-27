@@ -707,6 +707,10 @@ A *Repeater* control will contain the data (rows)
 
 ## Page.Load
 1. Drag the "State" type into the script
+2. Define the loading state
+
+![](images/StateSetup.png)
+
 2. Assign the "State" input parameter to the value property
 3. Fetch your data by dragging your query or WebService operation into the script
 4. Drag a List into the script and assign the type "Column" to the List
