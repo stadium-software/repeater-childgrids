@@ -4,6 +4,13 @@ This module provides for the display of a *DataGrid* control inside of a *Repeat
 
 https://github.com/user-attachments/assets/476319a7-dc6b-410f-b388-e90917d2166f
 
+# Basic Setup Overview
+
+1. Add the [RepeaterChildDataGrid](#repeaterchilddatagrid-global-script)
+2. Add the [types](#types)
+3. Add the [controls](#page) to your Page
+4. Initialise the view in the [Page.Load](#page.load) event handler
+
 # Version
 1.0
 
