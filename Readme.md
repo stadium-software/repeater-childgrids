@@ -725,6 +725,8 @@ Example ColumnsList Value
 
 ```json
 [{
+ "name": "edit"
+},{
  "name": "first_name",
  "header": "First Name"
 },{
@@ -733,7 +735,8 @@ Example ColumnsList Value
  "visible": false
 },{
  "name": "occupation",
- "header": "Occupation"
+ "header": "Occupation",
+ "sortable": false
 },{
  "name": "date_of_birth",
  "header": "DOB"
