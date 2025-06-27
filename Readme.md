@@ -753,12 +753,19 @@ ii. DataGridControlName: The name of the DataGrid control inside the Repeater co
 ![](images/DataGridName.png)
 
 iii. Columns: The List of columns called "ColumnsList"
+
 iv. ContainerClass: The unique class you assigned to the main container (e.g. client-side-datagrid)
+
 v. Data: Select the query Result or assign the JSON array to display from the API call
+
 vi. DataGridDataItem: The name of the property in the *DataSet* that contains the data for the DataGrid (e.g. "children"). The defautlt is "children"
+
 vii. State: The "State" Type created in step 1 of the "Initialise" script
+
 viii. PagingType (optional): Leave blank or enter 'classic' for the standard Stadium DataGrid paging format
+
 ix. ExpandMultiple (optional): A boolean to define if only one row can be expanded at a time (default is false)
+
 x. InitialiseExpanded (optional): A boolean to define if the DataGrid should be expanded on page load (default is false)
 
 ![](images/ScriptProps.png)
