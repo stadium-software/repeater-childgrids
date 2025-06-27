@@ -719,6 +719,8 @@ A *Repeater* control will contain the data (rows)
     3. visible (optional): Add "false" to hide the column (default is true)
     4. sortable (optional): Add "false" to show the heading as an (unclickable) Label instead of a Link (default is true)
 
+![](images/ColumnsList.png)
+
 Example ColumnsList Value
 
 ```json
