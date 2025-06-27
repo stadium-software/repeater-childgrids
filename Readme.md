@@ -697,7 +697,7 @@ A *Repeater* control will contain the data (rows)
 3. Drag all the controls you want to display in the *Repeater* into control
 4. Bind each *Repeater* control to a DataSet property
 
-![](images/BindControl.png)
+![](images/BindControls.png)
 
 5. Drag a *DataGrid* control into the *Repeater* control into the second row
 6. Assign the DataGrid columns as you usually would
