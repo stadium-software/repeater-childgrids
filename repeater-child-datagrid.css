@@ -127,6 +127,9 @@
             padding: 0.2rem 0.6rem;
             font-size: 1.2rem;
             box-shadow: none;
+            color: var(--DATA-GRID-PAGINATION-ACTIVE-FONT-COLOR);
+            background-color: var(--DATA-GRID-PAGINATION-ACTIVE-BACKGROUND-COLOR);
+            border-color: var(--DATA-GRID-PAGINATION-ACTIVE-BORDER-COLOR);
         }
         
         .text-box-container {
