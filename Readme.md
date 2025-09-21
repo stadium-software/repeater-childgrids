@@ -15,7 +15,10 @@ https://github.com/user-attachments/assets/476319a7-dc6b-410f-b388-e90917d2166f
 Check out the included sample application or the [Repeater DataGrid](https://github.com/stadium-software/repeater-datagrid) repo to find out how to add some more advanced features
 
 # Version
-1.0
+1.1
+
+## Changes
+1.1 Integrated CSS into the script
 
 # Setup
 
@@ -40,7 +43,7 @@ This is the main script necessary to create the tabular view of the Repeater
 3. Drag a *JavaScript* action into the script
 4. Add the Javascript below into the JavaScript code property
 ```javascript
-/* Stadium Script v1.0 https://github.com/stadium-software/repeater-childgrids */
+/* Stadium Script v1.1 https://github.com/stadium-software/repeater-childgrids */
 let scope = this;
 let repeaterData = ~.Parameters.Input.Data || [];
 let cols = ~.Parameters.Input.Columns || [];
@@ -101,6 +104,7 @@ grid.classList.add("parent-grid");
 let contID = container.id;
 let cellsPerRow = cols.length;
 if (document.getElementById(contID + "_stylesheet")) document.getElementById(contID + "_stylesheet").remove();
+loadCSS();
 initRepeaterGrid();
 /*----------------------------------------------------------------------------------------------*/
 async function initRepeaterGrid() {
@@ -567,6 +571,240 @@ function getNextChildDataGrid(exp) {
     }
     return sibling;
 }
+function loadCSS() {
+    let moduleID = "stadium-childgrids";
+    if (!document.getElementById(moduleID)) {
+        let cssMain = document.createElement("style");
+        cssMain.id = moduleID;
+        cssMain.type = "text/css";
+        cssMain.textContent = `
+.parent-grid-repeater-container {
+	interpolate-size: allow-keywords;
+    margin-top: 1rem;
+    align-items: center;
+
+    .control-container.grid-container.grid-layout {
+        padding-right: 0;
+    }
+
+    .grid-item {
+        display: flex;
+        align-items: center;
+        border-bottom: 0.1rem solid var(--dg-childgrids-border-color, var(--DATA-GRID-BORDER-COLOR, #ccc));
+        padding: var(--DATA-GRID-CELL-TOPBOTTOM-PADDING, 0.8rem) var(--DATA-GRID-CELL-RIGHTLEFT-PADDING, 0.8rem);
+        
+        .control-container {
+            font-size: var(--dg-childgrids-item-font-size, var(--DATA-GRID-CELL-FONT-SIZE, 1.4rem));
+            margin-top: 0;
+            vertical-align: -webkit-baseline-middle;
+            padding-right: 1rem;
+            color: var(--DATA-GRID-CELL-FONT-COLOR, var(--BODY-FONT-COLOR, #333));
+        }
+    }
+
+    .grid-item:has(> .control-container.visually-hidden),
+    .grid-item:has(> .control-container[style='display: none;']) {
+        padding: 0;
+        margin: 0;
+    }
+    .control-container.visually-hidden {
+        padding: 0;
+    }
+    .expander.hidden-expander {
+        cursor: default;
+        pointer-events: none;
+        &:before {
+            background-image: none;
+        }
+    }
+
+    .repeater-header {
+        border-top: 0.1rem solid var(--dg-childgrids-border-color, var(--DATA-GRID-HEADER-CELL-BORDER-COLOR, #ccc));
+        border-bottom: 0.3rem solid var(--dg-childgrids-border-color, var(--DATA-GRID-HEADER-CELL-BORDER-COLOR, #ccc));
+        padding: var(--dg-childgrids-header-topbottom-padding, var(--DATA-GRID-HEADER-CELL-TOPBOTTOM-PADDING, 0)) var(--dg-childgrids-header-rightleft-padding, var(--DATA-GRID-HEADER-CELL-RIGHTLEFT-PADDING, 0));
+        background-color: var(--DATA-GRID-HEADER-ROW-BACKGROUND-COLOR, #fff);
+
+        .btn.btn-link, 
+        span {
+            text-transform: var(--dg-childgrids-header-text-transform, var(--DATA-GRID-HEADER-CELL-TEXT-TRANSFORM, uppercase));
+            font-weight: var(--dg-childgrids-header-font-weight, var(--DATA-GRID-HEADER-CELL-FONT-WEIGHT, 600));
+            font-size: var(--dg-childgrids-header-font-size, var(--DATA-GRID-HEADER-CELL-FONT-SIZE, 1.2rem));
+            color: var(--DATA-GRID-HEADER-CELL-FONT-COLOR, #1976d2);
+            line-height: var(--DATA-GRID-HEADER-CELL-LINE-HEIGHT, 1.428571429);
+            white-space: nowrap;
+        }
+        .btn.btn-link {
+            text-decoration: var(--dg-childgrids-header-link-underline, var(--DATA-GRID-HEADER-CELL-TEXT-DECORATION, underline));
+
+            &:hover {
+                text-decoration: var(--dg-childgrids-header-link-underline, var(--DATA-GRID-HEADER-CELL-HOVER-TEXT-DECORATION, underline));
+                color: var(--DATA-GRID-HEADER-CELL-HOVER-FONT-COLOR, #999)
+            }
+        }
+    }
+    .dg-alternate-row {
+        background-color: var(--dg-childgrids-alternate-row-bg-color, var(--DATA-GRID-ODD-ROW-BACKGROUND-COLOR));
+    }
+
+    .dg-asc-sorting {
+        background-image: var(--dg-childgrids-sorting-asc-icon, var(--DATA-GRID-SORT-ARROW-ASC-ICON));
+        background-repeat: no-repeat;
+        background-position: right center;
+        background-size: var(--dg-childgrids-sorting-icon-size, var(--DATA-GRID-SORT-ARROW-ASCDESC-ICON-SIZE));
+        a, span {
+            padding-right: 0.2rem;
+        }
+    }
+
+    .dg-desc-sorting {
+        background-image: var(--dg-childgrids-sorting-desc-icon, var(--DATA-GRID-SORT-ARROW-DESC-ICON));
+        background-repeat: no-repeat;
+        background-position: right center;
+        background-size: var(--dg-childgrids-sorting-icon-size, var(--DATA-GRID-SORT-ARROW-ASCDESC-ICON-SIZE));
+        a, span {
+            padding-right: 0.2rem;
+        }
+    }
+
+    .paging-stack-layout {
+        display: flex;
+        align-items: center;
+        padding: 0.4rem 0;
+        border: 0.1rem solid var(--dg-childgrids-border-color, var(--DATA-GRID-BORDER-COLOR));
+
+        .control-container {
+            margin-top: 0;
+            vertical-align: -webkit-baseline-middle;
+            padding-right: 1.2rem;
+        }
+
+        .current-page {
+            font-style: italic;
+        }
+
+        .label-container {
+            margin-left: 0.4rem;
+            span {
+                font-size: 1.2rem;
+            }
+        }
+
+        .button-container {
+            padding-right: 0.2rem;
+        }
+
+        .button-container:first-child {
+            padding-left: 0.6rem;
+        }
+
+        .button-container.disabled .btn {
+            background-color: var(--dg-childgrids-border-color, var(--DATA-GRID-BORDER-COLOR));
+            border-color: var(--dg-childgrids-border-color, var(--DATA-GRID-BORDER-COLOR));
+        }
+
+        .btn {
+            width: auto;
+            padding: 0.2rem 0.6rem;
+            font-size: 1.2rem;
+            box-shadow: none;
+            color: var(--DATA-GRID-PAGINATION-ACTIVE-FONT-COLOR);
+            background-color: var(--DATA-GRID-PAGINATION-ACTIVE-BACKGROUND-COLOR);
+            border-color: var(--DATA-GRID-PAGINATION-ACTIVE-BORDER-COLOR);
+        }
+        
+        .text-box-container {
+            padding: 0 0.4rem 0 1.2rem;
+            
+        input[type='text'].form-control {
+                width: var(--dg-childgrids-paging-specific-page-textbox-width, 6rem);
+                height: 2.2rem;
+                padding: 0 0.4rem;
+            }
+        }
+        .pagination {
+            padding: 0.2rem 0.6rem;
+            a {
+                user-select: none;
+                text-decoration: none;
+                color: var(--DATA-GRID-PAGINATION-FONT-COLOR);
+                background-color: var(--DATA-GRID-PAGINATION-BACKGROUND-COLOR);
+                border: 0.1rem solid var(--DATA-GRID-PAGINATION-BORDER-COLOR);
+            }
+            .active a,
+            a:hover {
+                color: var(--DATA-GRID-PAGINATION-ACTIVE-FONT-COLOR);
+                background-color: var(--DATA-GRID-PAGINATION-ACTIVE-BACKGROUND-COLOR);
+                border-color: var(--DATA-GRID-PAGINATION-ACTIVE-BORDER-COLOR);
+            }
+        }
+    }
+
+	.expander {
+        height: 100%;
+        width: var(--dg-childgrids-expander-size, 3.6rem);
+        position: static;
+        margin-top: 0;
+        cursor: pointer;
+        padding: 0;
+    }
+    .expander:before {
+        content: "";
+        display: inline-block;
+        width: var(--dg-childgrids-expander-size, 3.6rem);
+        height: var(--dg-childgrids-expander-size, 3.6rem);
+        background-image: var(--dg-childgrids-expander-icon, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'%3E%3C!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE --%3E%3Cpath fill='%23636363' d='M12 14.975q-.2 0-.375-.062T11.3 14.7l-4.6-4.6q-.275-.275-.275-.7t.275-.7t.7-.275t.7.275l3.9 3.9l3.9-3.9q.275-.275.7-.275t.7.275t.275.7t-.275.7l-4.6 4.6q-.15.15-.325.213t-.375.062'/%3E%3C/svg%3E"));
+        background-repeat: no-repeat;
+        background-size: var(--dg-childgrids-expander-icon-size, 2.4rem);
+        background-position: center;
+		transform: rotate(270deg);
+    }
+	.expander.expanded:before {
+		transform: rotate(0deg);
+    }
+	.expander.disabled:before {
+		opacity: 0.5;
+    }
+    .expander:has(+ .child-datagrid-container), 
+    .child-datagrid-container {
+        height: 0;
+        overflow-y: clip;
+        transition: height var(--dg-childgrids-row-expansion-speed, 0.4s) ease;
+        padding: 0;
+        .form-group.input-group .form-control.data-grid-search-box {
+            width: var(--DATA-GRID-SEARCH-BOX-WIDTH, 26rem);
+        }
+    }
+    .expander:has(+ .child-datagrid-container.expanded), 
+    .child-datagrid-container.expanded {
+        height: calc-size(fit-content, size);
+        padding: 1.2rem;
+        border-width: var(--dg-childgrids-row-border-width, 0.2rem);
+    }
+    .child-datagrid-container.expanded {
+        height: calc-size(fit-content, size);
+    }
+    .hidden-cell {
+        display: contents;
+    }
+    .grid-layout {
+        border-left: 0.1rem solid var(--dg-childgrids-border-color, var(--DATA-GRID-BORDER-COLOR, #ccc));
+        border-right: 0.1rem solid var(--dg-childgrids-border-color, var(--DATA-GRID-BORDER-COLOR, #ccc));
+    }
+    .grid-repeater-item.odd-row {
+        background-color: var(--dg-childgrids-odd-row-bg-color, var(--DATA-GRID-ODD-ROW-BACKGROUND-COLOR, #f9f9f9));
+    }
+    .grid-repeater-item.even-row {
+        background-color: var(--dg-childgrids-even-row-bg-color, var(--DATA-GRID-EVEN-ROW-BACKGROUND-COLOR, #ffffff));
+    }
+}
+html {
+    min-height: 100%;
+    font-size: 62.5%;
+}
+        `;
+        document.head.appendChild(cssMain);
+    }   
+}
 window.rData = function() {
     return repeaterData;
 };
@@ -586,7 +824,7 @@ This script allow for the retrieval of the state of the Repeater, including the 
    2. Source: ~.JavaScript
 6. Add the Javascript below unchanged into the JavaScript code property
 ```javascript
-/* Stadium Script v1.0 https://github.com/stadium-software/repeater-childgrids */
+/* Stadium Script v1.1 https://github.com/stadium-software/repeater-childgrids */
 let containerClass = ~.Parameters.Input.ContainerClass;
 if (!containerClass) {
      console.error("The ContainerClass parameter is required");
@@ -621,7 +859,7 @@ NOTE: For the RepeaterChildDataGridDataGet to work, you can only have one Repeat
    2. Source: ~.JavaScript
 5. Add the Javascript below unchanged into the JavaScript code property
 ```javascript
-/* Stadium Script v1.0 https://github.com/stadium-software/repeater-datagrid-client-side */
+/* Stadium Script v1.1 https://github.com/stadium-software/repeater-datagrid-client-side */
 return window.rData();
 ```
 
@@ -781,24 +1019,7 @@ x. InitialiseExpanded (optional): A boolean to define if the DataGrid should be 
 ![](images/ScriptProps.png)
 
 ## CSS
-The CSS below is required for the correct functioning of the module. Variables exposed in the [*repeater-child-datagrid-variables.css*](repeater-child-datagrid-variables.css) file can be [customised](#customising-css).
-
-### Before v6.12
-1. Create a folder called "CSS" inside of your Embedded Files in your application
-2. Drag the two CSS files from this repo [*repeater-child-datagrid-variables.css*](repeater-child-datagrid-variables.css) and [*repeater-child-datagrid.css*](repeater-child-datagrid.css) into that folder
-3. Paste the link tags below into the *head* property of your application
-```html
-<link rel="stylesheet" href="{EmbeddedFiles}/CSS/repeater-child-datagrid.css">
-<link rel="stylesheet" href="{EmbeddedFiles}/CSS/repeater-child-datagrid-variables.css">
-``` 
-
-### v6.12+
-1. Create a folder called "CSS" inside of your Embedded Files in your application
-2. Drag the CSS files from this repo [*repeater-child-datagrid.css*](repeater-child-datagrid.css) into that folder
-3. Paste the link tag below into the *head* property of your application
-```html
-<link rel="stylesheet" href="{EmbeddedFiles}/CSS/repeater-child-datagrid.css">
-``` 
+Variables exposed in the [*repeater-child-datagrid-variables.css*](repeater-child-datagrid-variables.css) file can be [customised](#customising-css).
 
 ### Customising CSS
 1. Open the CSS file called [*repeater-child-datagrid-variables.css*](repeater-child-datagrid-variables.css) from this repo
