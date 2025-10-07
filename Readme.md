@@ -961,7 +961,7 @@ A *Repeater* control will contain the data (rows)
 
 3. Fetch your data by dragging your query or WebService operation into the script
 
-The data must be a list of parents where each parent contains a list of children:
+The data must be a list of parent objects (shown in the repeater). Each parent object contains a list of child objects (shown the related child Datagrid):
 ```json
 [
   {
