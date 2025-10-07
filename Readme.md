@@ -960,7 +960,6 @@ A *Repeater* control will contain the data (rows)
 ![](images/StateSetup.png)
 
 3. Fetch your data by dragging your query or WebService operation into the script
-4. Assign the data using a `SetValue`
 
 The data must be a list of parents where each parent contains a list of children:
 ```json
@@ -1016,7 +1015,7 @@ The data must be a list of parents where each parent contains a list of children
   }
 ]
 ```
-
+4. Assign the data using a `SetValue`
 5. Drag a List into the script and assign the type "Column" to the List
 6. Add each control / column in your Repeater to the List by providing the following
     1. name (required & unique): The column name (case sensitive & must match the column name in the data)
