@@ -960,8 +960,65 @@ A *Repeater* control will contain the data (rows)
 ![](images/StateSetup.png)
 
 3. Fetch your data by dragging your query or WebService operation into the script
-4. Drag a List into the script and assign the type "Column" to the List
-5. Add each control / column in your Repeater to the List by providing the following
+4. Assign the data using a `SetValue`
+
+The data must be a list of parents where each parent contains a list of children:
+```json
+[
+  {
+    "first_name": "Scott",
+    "last_name": "White",
+    "occupation": "Hydrogeologist",
+    "children": [
+      {
+        "first_name": "Michael",
+        "last_name": "White",
+        "date_of_birth": "2016-11-08",
+        "gender": "Male",
+        "school": "Schneider-Marks School",
+      },
+      {
+        "first_name": "Daniel",
+        "last_name": "White",
+        "date_of_birth": "2010-08-22",
+        "gender": "Male",
+        "school": "Rios LLC School",
+      }
+    ],
+  },
+  {
+    "first_name": "Angela",
+    "last_name": "George",
+    "occupation": "Printmaker",
+    "children": [
+      {
+        "first_name": "Evan",
+        "last_name": "George",
+        "date_of_birth": "2012-11-01",
+        "gender": "Female",
+        "school": "Hernandez-Willis School",
+      },
+      {
+        "first_name": "Amber",
+        "last_name": "George",
+        "date_of_birth": "2015-04-12",
+        "gender": "Male",
+        "school": "Smith Inc School",
+      },
+      {
+        "first_name": "Christopher",
+        "last_name": "George",
+        "date_of_birth": "2019-05-28",
+        "gender": "Male",
+        "school": "Macdonald, Clarke and Short School",
+      }
+    ]
+  }
+]
+```
+
+5. Drag a List into the script and assign the type "Column" to the List
+6. Add each control / column in your Repeater to the List by providing the following
     1. name (required & unique): The column name (case sensitive & must match the column name in the data)
     2. header (optional): The header title shown on this column. A value is necessary for users to be able to sort by the column
     3. visible (optional): Add "false" to hide the column (default is true)
