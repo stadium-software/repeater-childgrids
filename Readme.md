@@ -15,10 +15,12 @@ https://github.com/user-attachments/assets/476319a7-dc6b-410f-b388-e90917d2166f
 Check out the included sample application or the [Repeater DataGrid](https://github.com/stadium-software/repeater-datagrid) repo to find out how to add some more advanced features
 
 # Version
-1.1
+1.2
 
 ## Changes
 1.1 Integrated CSS into the script
+
+1.2 Fixed class bug that sometimes caused layout problems when client-side-repeater and this module were used in the same application
 
 # Setup
 
@@ -43,7 +45,7 @@ This is the main script necessary to create the tabular view of the Repeater
 3. Drag a *JavaScript* action into the script
 4. Add the Javascript below into the JavaScript code property
 ```javascript
-/* Stadium Script v1.1 https://github.com/stadium-software/repeater-childgrids */
+/* Stadium Script v1.2 https://github.com/stadium-software/repeater-childgrids */
 let scope = this;
 let repeaterData = ~.Parameters.Input.Data || [];
 let cols = ~.Parameters.Input.Columns || [];
@@ -90,7 +92,7 @@ if (container.length == 0) {
     return false;
 }
 container = container[0];
-container.classList.add("stadium-client-side-dg-repeater", "parent-grid-repeater-container");
+container.classList.add("stadium-client-side-dg-child-repeater", "parent-grid-repeater-container");
 let grid = container.querySelectorAll(".grid-layout");
 if (grid.length == 0) {
     console.error("The container '" + containerClass + "' must contain a Grid control");
