@@ -22,6 +22,8 @@ Check out the included sample application or the [Repeater DataGrid](https://git
 
 1.2 Fixed class bug that sometimes caused layout problems when client-side-repeater and this module were used in the same application
 
+1.2.1 Added datagrid header font color to the css variables file
+
 # Setup
 
 ## Application Setup
@@ -45,7 +47,7 @@ This is the main script necessary to create the tabular view of the Repeater
 3. Drag a *JavaScript* action into the script
 4. Add the Javascript below into the JavaScript code property
 ```javascript
-/* Stadium Script v1.2 https://github.com/stadium-software/repeater-childgrids */
+/* Stadium Script v1.2.1 https://github.com/stadium-software/repeater-childgrids */
 let scope = this;
 let repeaterData = ~.Parameters.Input.Data || [];
 let cols = ~.Parameters.Input.Columns || [];
@@ -631,17 +633,14 @@ function loadCSS() {
             text-transform: var(--dg-childgrids-header-text-transform, var(--DATA-GRID-HEADER-CELL-TEXT-TRANSFORM, uppercase));
             font-weight: var(--dg-childgrids-header-font-weight, var(--DATA-GRID-HEADER-CELL-FONT-WEIGHT, 600));
             font-size: var(--dg-childgrids-header-font-size, var(--DATA-GRID-HEADER-CELL-FONT-SIZE, 1.2rem));
-            color: var(--DATA-GRID-HEADER-CELL-FONT-COLOR, #1976d2);
+            color: var(--dg-childgrids-header-font-color, var(--DATA-GRID-HEADER-CELL-FONT-COLOR, #1976d2));
             line-height: var(--DATA-GRID-HEADER-CELL-LINE-HEIGHT, 1.428571429);
             white-space: nowrap;
-        }
-        .btn.btn-link {
             text-decoration: var(--dg-childgrids-header-link-underline, var(--DATA-GRID-HEADER-CELL-TEXT-DECORATION, underline));
-
-            &:hover {
-                text-decoration: var(--dg-childgrids-header-link-underline, var(--DATA-GRID-HEADER-CELL-HOVER-TEXT-DECORATION, underline));
-                color: var(--DATA-GRID-HEADER-CELL-HOVER-FONT-COLOR, #999)
-            }
+        }
+        .btn.btn-link:hover {
+            text-decoration: var(--dg-childgrids-header-link-underline, var(--DATA-GRID-HEADER-CELL-HOVER-TEXT-DECORATION, underline));
+            color: var(--DATA-GRID-HEADER-CELL-HOVER-FONT-COLOR, #999)
         }
     }
     .dg-alternate-row {
